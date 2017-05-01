@@ -30,9 +30,35 @@ void insereArvore(Arvore** arv, int dado) {
 
 void percorrerArvore(Arvore* arv) {
 	if (arv != NULL) {
+
+		printf("%d ", arv->dado);
 		percorrerArvore(arv->esq);
-		printf("%d\n", arv->dado);
 		percorrerArvore(arv->dir);
+
+	}
+}
+
+void arvorePreFixada(Arvore* arv) {
+	if (arv != NULL) {
+		printf("%d ", arv->dado);
+		percorrerArvore(arv->esq);
+		percorrerArvore(arv->dir);
+	}
+}
+
+void arvoreCentral(Arvore* arv) {
+	if (arv != NULL) {
+		percorrerArvore(arv->esq);
+		printf("%d ", arv->dado);
+		percorrerArvore(arv->dir);
+	}
+}
+
+void arvorePosFixada(Arvore* arv) {
+	if (arv != NULL) {
+		percorrerArvore(arv->esq);
+		percorrerArvore(arv->dir);
+		printf("%d ", arv->dado);
 	}
 }
 
@@ -42,7 +68,7 @@ int main() {
 
 	arv = init();
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 10; i++) {
 		scanf("%d", &num);
 		insereArvore(&arv, num);
 	}
