@@ -1,60 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int cont = 0;
-
-typedef struct Arvore
-{
+typedef struct arvore {
 	int dado;
-	struct Arvore* esq;
-	struct Arvore* dir;
+	struct arvore* esq;
+	struct arvore* dir;
 } Arvore;
 
+Arvore* init() {
+	return NULL;
+}
 
-void insereArvore(Arvore *arv, int dado){
-	printf("abriu");
-	if(arv == NULL){
-		Arvore* aux = (Arvore*) malloc(sizeof(Arvore));
-		aux->dado = dado;
-		aux->esq = NULL;
-		aux->dir = NULL;
-		arv = aux;
-		printf("dado: %d\n", dado);
-		printf("arvore dado: %d\n", arv->dado);
-		// cont++;
+void insereArvore(Arvore** arv, int dado) {
+	if (*arv == NULL) {
+		*arv = (Arvore*) malloc(sizeof(Arvore));
+	    (*arv)->esq = NULL;
+	    (*arv)->dir = NULL;
+	    (*arv)->dado = dado;
 	}
-	printf("fechou");
-	// if(dado < arv->dado){
-	// 	insereArvore(arv->esq, dado);
-	// }
-	// if(dado > arv->dado){
-	// 	insereArvore(arv->dir, dado);
-	// }
+	else {
+		if (dado < (*arv)->dado) {
+			insereArvore(&(*arv)->esq, dado);
+		}
+		else {
+			insereArvore(&(*arv)->dir, dado);
+		}
+	}
 }
 
-//em ordem
-void percorrerArvore(Arvore *arv){
-	if (arv == NULL) return;
-	percorrerArvore(arv->esq);
-	printf("%d\n", arv->dado);
-	percorrerArvore(arv->dir);
+void percorrerArvore(Arvore* arv) {
+	if (arv != NULL) {
+		percorrerArvore(arv->esq);
+		printf("%d\n", arv->dado);
+		percorrerArvore(arv->dir);
+	}
 }
 
-int main(){
+int main() {
 	int num;
-	Arvore *a1;
+	Arvore* arv;
 
-	// Iniciar árvore
-	a1 = NULL;
+	arv = init();
 
-	for(int i = 0; i < 10; i++){
-		printf("Digite um número: ");
+	for (int i = 0; i < 3; i++) {
 		scanf("%d", &num);
-		insereArvore(a1, num);
-		printf("%d\n", a1->dado);
-		// percorrerArvore(a1);
-		printf("Nos da arvore: %d\n", cont);
+		insereArvore(&arv, num);
 	}
-	percorrerArvore(a1);
-	return 0;
+
+	printf("Arvore preenchida.\n");
+	percorrerArvore(arv);
+
 }
