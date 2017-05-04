@@ -58,5 +58,16 @@ int main() {
       	start = clock();
     	buscaBinaria(vetor, TAM_Q2, chaves[i]);
       	tempoVet = (clock() - start) / (double) CLOCKS_PER_SEC;
+        mediaVet += tempoVet;
+        printf("\nChave: %d\nTempo de busca no vetor: %.15lf\n", chaves[i],tempoVet);
+
+        //start = clock();
+    	//buscaBinaria(vetor, TAM_Q2, chaves[i]);
+      	//tempoArv = (clock() - start) / (double) CLOCKS_PER_SEC;
+        //mediaArv+= tempoArv;
+        //printf("Tempo de busca na árvore: %.15lf\n\n", tempoArv);
     }
+
+    printf("\nTempo médio da Busca Binária no vetor: %.15lf\n\n", (mediaVet)/i);
+    //printf("Tempo médio da Busca na Árvore:        %.15lf\n", (mediaArv)/i);
 }
