@@ -5,9 +5,9 @@
 void insereArvore(Arvore** arv, int dado) {
 	if (*arv == NULL) {
 		*arv = (Arvore*) malloc(sizeof(Arvore));
-	    (*arv)->esq = NULL;
-	    (*arv)->dir = NULL;
-	    (*arv)->dado = dado;
+		(*arv)->esq = NULL;
+		(*arv)->dir = NULL;
+		(*arv)->dado = dado;
 	}
 	else {
 		if (dado < (*arv)->dado) {
@@ -41,4 +41,17 @@ void arvorePosFixada(Arvore* arv) {
 		arvorePosFixada(arv->dir);
 		printf("%d ", arv->dado);
 	}
+}
+
+int buscaArv(Arvore* arv, int chave){
+	if(arv != NULL){
+		if(arv->dado < chave){
+			buscaArv(arv->esq, chave);
+		}else if(arv->dado > chave){
+			buscaArv(arv->dir, chave);
+		}else{
+			return 1;
+		}
+	}
+	return -1;
 }
