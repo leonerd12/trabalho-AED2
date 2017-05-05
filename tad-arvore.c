@@ -43,15 +43,15 @@ void arvorePosFixada(Arvore* arv) {
 	}
 }
 
-int buscaArv(Arvore* arv, int chave){
-	if(arv != NULL){
-		if(arv->dado < chave){
-			buscaArv(arv->esq, chave);
-		}else if(arv->dado > chave){
-			buscaArv(arv->dir, chave);
-		}else{
-			return 1;
+void buscaArv(Arvore* raiz, int chave){
+	if(raiz != NULL){
+		if(raiz->dado == chave){
+			printf("achou\n");
+		}else if(chave < raiz->dado){
+			buscaArv(raiz->esq, chave);
+		}else if(chave > raiz->dado){
+			buscaArv(raiz->dir, chave);
 		}
 	}
-	return -1;
+	// return -1;
 }

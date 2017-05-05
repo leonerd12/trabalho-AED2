@@ -15,6 +15,6 @@ void insereArvore(Arvore** arv, int dado);
 void arvorePreFixada(Arvore* arv);
 void arvoreCentral(Arvore* arv);
 void arvorePosFixada(Arvore* arv);
-int buscaArv(Arvore* arv, int chave);
+void buscaArv(Arvore* arv, int chave);
 
 #endif

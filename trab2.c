@@ -62,14 +62,11 @@ int main() {
         printf("\nChave: %d\nTempo de busca no vetor: %.15lf\n", chaves[i],tempoVet);
 
         start = clock();
-    	buscaArv(arv, chaves[i]);
+        buscaArv(arv2, chaves[i]);
       	tempoArv = (clock() - start) / (double) CLOCKS_PER_SEC;
         mediaArv+= tempoArv;
         printf("Tempo de busca na árvore: %.15lf\n\n", tempoArv);
     }
-
-    printf("chaves:\n");
-    imprimeVetor(chaves, 30);
 
     printf("\nTempo médio da Busca Binária no vetor: %.15lf\n\n", (mediaVet)/i);
     printf("Tempo médio da Busca na Árvore:        %.15lf\n", (mediaArv)/i);
